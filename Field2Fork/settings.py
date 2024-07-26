@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'marketplace',
     'categories',
     'accountsAndLogin',
+    'cart',
 ]
 
 MIDDLEWARE = [
