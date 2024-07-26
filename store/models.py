@@ -1,6 +1,7 @@
 from django.db import models
 from django.urls import reverse
 from categories.models import Categories
+
 # Create your models here.
 
 class Product(models.Model):
@@ -11,7 +12,7 @@ class Product(models.Model):
     image = models.ImageField(blank=True,upload_to="photo/products")
     stock = models.IntegerField()
     is_available = models.BooleanField(default=True)
-    category = models.ForeignKey(Categories, related_name='marketplace_products', on_delete=models.CASCADE)
+    category = models.ForeignKey(Categories, on_delete=models.CASCADE)
     created_date = models.DateTimeField(auto_now_add=True,)
     modified_date = models.DateTimeField(auto_now=True)
 
@@ -20,4 +21,4 @@ class Product(models.Model):
 
     def __str__(self):
         return self.product_name
-
+    
