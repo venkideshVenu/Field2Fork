@@ -1,0 +1,46 @@
+
+{% extends 'temp_homepage/base.html' %}
+{% block body_block %}
+{% load static %}
+
+<!-- Navbar & Hero Start -->
+<div class="container-xxl position-relative p-0">
+
+
+    <div class="container-xxl py-5 bg-primary hero-header mb-5">
+        <div class="container my-5 py-5 px-lg-5">
+            <div class="row g-5 py-5">
+                <div class="col-lg-6 text-center text-lg-start">
+                    <h1 class="text-white mb-4 animated zoomIn">Connecting Farmers and Consumers Directly</h1>
+                    <p class="text-white pb-3 animated zoomIn">Our platform bridges the gap between local farmers and consumers, ensuring fresh, sustainable, and healthy food for everyone. Join us in promoting a healthier lifestyle and supporting local agriculture.</p>
+                    <a href="{% url 'login' %}" class="btn btn-light py-sm-3 px-sm-5 rounded-pill me-3 animated slideInLeft">Get Started</a>
+                </div>
+                <div class="col-lg-6 text-center text-lg-start">
+                    <img class="img-fluid" src="{% static 'home/img/farm.png' %}" alt="Farm-to-Table">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Navbar & Hero End -->
+
+
+<!-- Newsletter Start -->
+<div class="container-xxl bg-primary newsletter my-5 wow fadeInUp" data-wow-delay="0.1s">
+    <div class="container px-lg-5">
+        <div class="row align-items-center" style="height: 250px;">
+            <div class="col-12 col-md-6">
+                <h3 class="text-white">Stay Updated with Our Newsletter</h3>
+                <small class="text-white">Subscribe to get the latest updates on our initiatives and events.</small>
+            </div>
+            <div class="col-12 col-md-6">
+                <div class="position-relative w-100 mt-3 mt-md-0">
+                    <input class="form-control border-0 rounded-pill w-100 ps-4 pe-5" type="text" placeholder="Enter your email">
+                    <button type="button" class="btn shadow-none position-absolute top-0 end-0 mt-1 me-2"><i class="fa fa-paper-plane text-primary fs-4"></i></button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Newsletter End -->
+{% endblock  %}

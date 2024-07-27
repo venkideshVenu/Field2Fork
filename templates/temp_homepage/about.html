@@ -1,0 +1,238 @@
+
+{% extends 'temp_homepage/base.html' %}
+{% block body_block %}
+{% load static %}
+
+
+<div class="container-xxl py-5 bg-primary hero-header mb-5">
+                <div class="container my-5 py-5 px-lg-5">
+                    <div class="row g-5 py-5">
+                        <div class="col-12 text-center">
+                            <h1 class="text-white animated zoomIn">About Us</h1>
+                            <hr class="bg-white mx-auto mt-0" style="width: 90px;">
+                            <nav aria-label="breadcrumb">
+                                <ol class="breadcrumb justify-content-center">
+                                    <li class="breadcrumb-item"><a class="text-white" href="#">Home</a></li>
+                                    <li class="breadcrumb-item"><a class="text-white" href="#">Pages</a></li>
+                                    <li class="breadcrumb-item text-white active" aria-current="page">About</li>
+                                </ol>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        <!-- About Start -->
+        <div class="container-xxl py-5">
+            <div class="container px-lg-5">
+                <div class="row g-5">
+                    <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s">
+                        <div class="section-title position-relative mb-4 pb-2">
+                            <h6 class="position-relative text-primary ps-4">About Us</h6>
+                            <h2 class="mt-2">Connecting Farmers with Consumers for a Healthier Future</h2>
+                        </div>
+                        <p class="mb-4">At Farm-to-Table Community Network, we are dedicated to creating a sustainable and healthy future by connecting local farmers with consumers directly. Our platform aims to promote sustainable agriculture, support local economies, and ensure access to fresh and healthy food for all.</p>
+                        <div class="row g-3">
+                            <div class="col-sm-6">
+                                <h6 class="mb-3"><i class="fa fa-check text-primary me-2"></i>Community Focused</h6>
+                                <h6 class="mb-0"><i class="fa fa-check text-primary me-2"></i>Sustainable Practices</h6>
+                            </div>
+                            <div class="col-sm-6">
+                                <h6 class="mb-3"><i class="fa fa-check text-primary me-2"></i>Health & Wellness</h6>
+                                <h6 class="mb-0"><i class="fa fa-check text-primary me-2"></i>Trusted Partners</h6>
+                            </div>
+                        </div>
+                        <div class="d-flex align-items-center mt-4">
+                            <a class="btn btn-primary rounded-pill px-4 me-3" href="service.html">Read More</a>
+                            <a class="btn btn-outline-primary btn-square me-3" href=""><i class="fab fa-facebook-f"></i></a>
+                            <a class="btn btn-outline-primary btn-square me-3" href=""><i class="fab fa-twitter"></i></a>
+                            <a class="btn btn-outline-primary btn-square me-3" href=""><i class="fab fa-instagram"></i></a>
+                            <a class="btn btn-outline-primary btn-square" href=""><i class="fab fa-linkedin-in"></i></a>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <img class="img-fluid wow zoomIn" data-wow-delay="0.5s" src="{% static 'home/img/vegetable.png' %}" >
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- About End -->
+
+        <!-- Mission Start -->
+        <div class="container-xxl py-5 bg-light">
+            <div class="container px-lg-5">
+                <div class="section-title text-center position-relative mb-4 pb-2">
+                    <h6 class="position-relative d-inline text-primary ps-4">Our Mission</h6>
+                    <h2 class="mt-2">To Promote Sustainable and Healthy Living</h2>
+                </div>
+                <div class="row g-4">
+                    <div class="col-lg-4 wow fadeInUp" data-wow-delay="0.1s">
+                        <div class="bg-white text-center h-100 p-4 p-xl-5">
+                            <img class="img-fluid mb-4" src="{% static 'home/img/icon-1.png' %}"  alt="">
+                            <h4 class="mb-3">Sustainability</h4>
+                            <p class="mb-4">We aim to reduce the carbon footprint by encouraging local sourcing and sustainable farming practices.</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 wow fadeInUp" data-wow-delay="0.3s">
+                        <div class="bg-white text-center h-100 p-4 p-xl-5">
+                            <img class="img-fluid mb-4" src="{% static 'home/img/icon-2.png' %}" alt="">
+                            <h4 class="mb-3">Community Support</h4>
+                            <p class="mb-4">Our platform empowers local farmers and strengthens community bonds by facilitating direct connections.</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 wow fadeInUp" data-wow-delay="0.5s">
+                        <div class="bg-white text-center h-100 p-4 p-xl-5">
+                            <img class="img-fluid mb-4" src="{% static 'home/img/icon-3.png' %}" alt="">
+                            <h4 class="mb-3">Health & Wellness</h4>
+                            <p class="mb-4">We promote healthier living by providing access to fresh, organic, and nutritious food options.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Mission End -->
+
+
+
+        <!-- Our History Start -->
+        <div class="container-xxl py-5 bg-light">
+            <div class="container px-lg-5">
+                <div class="section-title text-center position-relative mb-4 pb-2">
+                    <h6 class="position-relative d-inline text-primary ps-4">Our History</h6>
+                    <h2 class="mt-2">A Journey of Growth and Innovation</h2>
+                </div>
+                <div class="row g-5">
+                    <div class="col-lg-12">
+                        <div class="accordion" id="historyAccordion">
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="headingOne">
+                                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                        2015: The Beginning
+                                    </button>
+                                </h2>
+                                <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#historyAccordion">
+                                    <div class="accordion-body">
+                                        <p>Our journey started in 2015 with a small team of passionate individuals who wanted to make a difference in the way people source their food. We began with a simple mission: to connect local farmers with consumers.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="headingTwo">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                        2018: Expansion and Growth
+                                    </button>
+                                </h2>
+                                <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#historyAccordion">
+                                    <div class="accordion-body">
+                                        <p>By 2018, we had grown significantly, adding more farmers and consumers to our network. We also introduced new features to our platform, making it easier for users to connect and transact.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="headingThree">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                        2021: Embracing Technology
+                                    </button>
+                                </h2>
+                                <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#historyAccordion">
+                                    <div class="accordion-body">
+                                        <p>In 2021, we embraced new technologies to enhance our platform. This included the introduction of AI-powered tools to help farmers optimize their production and consumers make healthier choices.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="headingFour">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                                        2024: Looking Ahead
+                                    </button>
+                                </h2>
+                                <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#historyAccordion">
+                                    <div class="accordion-body">
+                                        <p>As we move forward in 2024, we are committed to continuing our mission of promoting sustainable and healthy living. We plan to expand our reach and introduce more innovative solutions to better serve our community.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Our History End -->
+
+        <!-- Our Values Start -->
+        <div class="container-xxl py-5">
+            <div class="container px-lg-5">
+                <div class="section-title text-center position-relative mb-4 pb-2">
+                    <h6 class="position-relative d-inline text-primary ps-4">Our Values</h6>
+                    <h2 class="mt-2">Core Values that Drive Our Mission</h2>
+                </div>
+                <div class="row g-5">
+                    <div class="col-lg-4 wow fadeInUp" data-wow-delay="0.1s">
+                        <div class="bg-white text-center h-100 p-4 p-xl-5">
+                            <img class="img-fluid mb-4" src="{% static 'home/img/value-1.png' %}" alt="">
+                            <h4 class="mb-3">Integrity</h4>
+                            <p class="mb-4">We uphold the highest standards of integrity in all our actions, ensuring transparency and trust in our community.</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 wow fadeInUp" data-wow-delay="0.3s">
+                        <div class="bg-white text-center h-100 p-4 p-xl-5">
+                            <img class="img-fluid mb-4" src="{% static 'home/img/value-2.png' %}" alt="">
+                            <h4 class="mb3">Innovation</h4>
+                            <p class="mb-4">We continuously seek innovative solutions to improve our platform and better serve our users.</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 wow fadeInUp" data-wow-delay="0.5s">
+                        <div class="bg-white text-center h-100 p-4 p-xl-5">
+                            <img class="img-fluid mb-4" src="{% static 'home/img/value-3.png' %}" alt="">
+                            <h4 class="mb-3">Collaboration</h4>
+                            <p class="mb-4">We believe in the power of collaboration, working closely with farmers, consumers, and partners to achieve our common goals.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Our Values End -->
+
+        <!-- Full Screen Search Start -->
+        <div class="modal fade" id="searchModal" tabindex="-1">
+            <div class="modal-dialog modal-fullscreen">
+                <div class="modal-content" style="background: rgba(29, 29, 39, 0.7);">
+                    <div class="modal-header border-0">
+                        <button type="button" class="btn bg-white btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body d-flex align-items-center justify-content-center">
+                        <div class="input-group" style="max-width: 600px;">
+                            <input type="text" class="form-control bg-transparent border-light p-3" placeholder="Type search keyword">
+                            <button class="btn btn-light px-4"><i class="bi bi-search"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Full Screen Search End -->
+
+
+        <!-- Newsletter Start -->
+        <div class="container-xxl bg-primary newsletter my-5 wow fadeInUp" data-wow-delay="0.1s">
+            <div class="container px-lg-5">
+                <div class="row align-items-center" style="height: 250px;">
+                    <div class="col-12 col-md-6">
+                        <h3 class="text-white">Ready to get started</h3>
+                        <small class="text-white">Diam elitr est dolore at sanctus nonumy.</small>
+                        <div class="position-relative w-100 mt-3">
+                            <input class="form-control border-0 rounded-pill w-100 ps-4 pe-5" type="text" placeholder="Enter Your Email" style="height: 48px;">
+                            <button type="button" class="btn shadow-none position-absolute top-0 end-0 mt-1 me-2"><i class="fa fa-paper-plane text-primary fs-4"></i></button>
+                        </div>
+                    </div>
+                    <div class="col-md-6 text-center mb-n5 d-none d-md-block">
+                        <img class="img-fluid mt-5" style="height: 250px;" src="{% static 'home/img/newsletter.png' %}" >
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Newsletter End -->
+        
+    </div>
+
+{% endblock  %}
