@@ -1,0 +1,57 @@
+{% extends 'temp_marketplace/base.html' %}
+{% block body_block %}
+{% load static %}
+
+<link href="{% static 'marketplace/css/homestyle.css' %}" rel="stylesheet">
+<script src="{% static 'marketplace/js/mainpage.js' %}"></script>
+
+<!-- templates/marketplace.html -->
+<section id="category">
+    <!--heading---------------->
+    <div class="category-heading">
+        <h2>Category</h2>
+        <span>All</span>
+    </div>
+
+    <!--box-container---------->
+    <div class="category-container">
+        <!-- Django loop to iterate over categories -->
+        {% for category in categories %}
+            <a class="category-box" href="{{ category.get_slug }}">
+                <img alt="{{ category.category_name }}" src="{{ category.cat_image.url }}">
+                <span>{{ category.category_name }}</span>
+            </a>
+        {% endfor %}
+    </div>
+</section>
+
+<section id="popular-product">
+    <!--heading----------->
+    <div class="product-heading">
+        <h3>Popular Product</h3>
+        <span>All</span>
+    </div>
+    <!--box-container------>
+    <div class="product-container">
+        {% for product in products %}
+            <!--box---------->
+            <div class="product-box">
+                <img alt="{{ product.product_name }}" src="{{ product.image.url }}">
+                <strong>{{ product.product_name }}</strong>
+                <span class="quantity">1 KG</span>
+                <span class="price">Rs. {{ product.price }}</span>
+                <!--cart-btn------->
+                <a href="{% url 'add_to_cart' product.id %}" class="cart-btn">
+                    <i class="fas fa-shopping-bag"></i> Add to Cart
+                </a>
+                <!--like-btn------->
+                <a class="like-btn">
+                    <i class="far fa-heart"></i>
+                </a>
+            </div>
+        {% empty %}
+            <p>No products available.</p>
+        {% endfor %}
+    </div>
+</section>
+{% endblock %}

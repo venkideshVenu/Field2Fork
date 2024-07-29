@@ -47,30 +47,82 @@
 
         <!-- Navbar & Hero Start -->
         <div class="container-xxl position-relative p-0">
-            <nav class="navbar navbar-expand-lg navbar-light px-4 px-lg-5 py-3 py-lg-0">
-                <a href="{% url 'homepage' %}" class="navbar-brand p-0">
-                    <h1 class="m-0">Field2Fork</h1>
-                    <!-- <img src="img/logo.png" alt="Logo"> -->
-                </a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
-                    <span class="fa fa-bars"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarCollapse">
-                    <div class="navbar-nav ms-auto py-0">
-                        <a href="{% url 'homepage' %}" class="nav-item nav-link">Home</a>
-                        <a href="{% url 'aboutpage' %}" class="nav-item nav-link ">About</a>
-                        <a href="{% url 'marketpage' %}" class="nav-item nav-link">Marketplace</a>
-                        <a href="{% url 'notfound' %}" class="nav-item nav-link">Health Info</a>
+{% comment %}
+                <nav class="navbar navbar-expand-lg navbar-light px-4 px-lg-5 py-3 py-lg-0">
+                    <a href="{% url 'homepage' %}" class="navbar-brand p-0">
+                        <h1 class="m-0">Field2Fork</h1>
+                        <!-- <img src="img/logo.png" alt="Logo"> -->
+                    </a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+                        <span class="fa fa-bars"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarCollapse">
+                        <div class="navbar-nav ms-auto py-0">
+                            <a href="{% url 'homepage' %}" class="nav-item nav-link">Home</a>
+                            <a href="{% url 'aboutpage' %}" class="nav-item nav-link ">About</a>
+                            <a href="{% url 'marketpage' %}" class="nav-item nav-link">Marketplace</a>
+                            <a href="{% url 'notfound' %}" class="nav-item nav-link">Health Info</a>
+                            
+                            <a href="{% url 'contactpage' %}" class="nav-item nav-link">Contact</a>
+    
+                            <i class="fas fa-shopping-cart"></i>
+                            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                                {{ total_items }}
+                            </span>
+                        </a>
+                        </div>
                         
-                        <a href="{% url 'contactpage' %}" class="nav-item nav-link">Contact</a>
+                       
                     </div>
-                    
-                    <a href="{% url 'login' %}" class="btn btn-secondary text-light rounded-pill py-2 px-4 ms-3">Join Us</a>
-                </div>
-            </nav>
+                </nav>
+{% endcomment %}
+
+<nav class="navbar navbar-expand-lg navbar-light px-4 px-lg-5 py-3 py-lg-0">
+    <a href="{% url 'homepage' %}" class="navbar-brand p-0">
+        <h1 class="m-0">Field2Fork</h1>
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+        <span class="fa fa-bars"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+        <div class="navbar-nav ms-auto py-0">
+            <a href="{% url 'homepage' %}" class="nav-item nav-link">Home</a>
+            <a href="{% url 'aboutpage' %}" class="nav-item nav-link">About</a>
+            <a href="{% url 'marketpage' %}" class="nav-item nav-link">Marketplace</a>
+            <a href="{% url 'notfound' %}" class="nav-item nav-link">Health Info</a>
+            <a href="{% url 'contactpage' %}" class="nav-item nav-link">Contact</a>
+        </div>
+        <div class="nav-item dropdown">
+            <a href="#" class="nav-link" id="cartDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <img src="{% static 'marketplace/img/trolley.png' %}" alt="Cart" width="24" height="24">
+                <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                    {{ total_items }}
+                </span>
+            </a>
+            <!-- Add dropdown menu items for cart here if needed -->
+        </div>
+    </div>
+</nav>
 
         <!-- Navbar & Hero End -->
 
+        <div class="container-xxl py-5 bg-primary hero-header mb-5">
+            <div class="container my-5 py-5 px-lg-5">
+                <div class="row g-5 py-5">
+                    <div class="col-12 text-center">
+                        <h1 class="text-white animated zoomIn">Market Place</h1>
+                        <hr class="bg-white mx-auto mt-0" style="width: 90px;">
+                        <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb justify-content-center">
+                                <li class="breadcrumb-item"><a class="text-white" href="#">Home</a></li>
+                                <li class="breadcrumb-item"><a class="text-white" href="#">Pages</a></li>
+                                <li class="breadcrumb-item text-white active" aria-current="page">Marketplace</li>
+                            </ol>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
 
         {% block body_block %}
 

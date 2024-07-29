@@ -1,0 +1,17 @@
+{% extends 'temp_marketplace/base.html' %}
+
+{% block body_block %}
+<h1> -----------------------------</h1>
+  <h1>Categories</h1>
+  <ul>
+    {% for category in categories %}
+      <li>
+        {{ category.category_name }} ({{ category.slug }})
+        <p>{{ category.description }}</p>
+        {% if category.cat_image %}
+          <img src="{{ category.cat_image.url }}" alt="Category Image">
+        {% endif %}
+      </li>
+    {% endfor %}
+  </ul>
+{% endblock %}
