@@ -26,25 +26,24 @@
 </section>
 
 <section id="popular-product">
-    <!--heading----------->
+    
     <div class="product-heading">
         <h3>Popular Product</h3>
         <span>All</span>
     </div>
-    <!--box-container------>
+
     <div class="product-container">
         {% for product in products %}
-            <!--box---------->
+
             <div class="product-box">
                 <img alt="{{ product.product_name }}" src="{{ product.image.url }}">
                 <strong>{{ product.product_name }}</strong>
                 <span class="quantity">1 KG</span>
                 <span class="price">Rs. {{ product.price }}</span>
-                <!--cart-btn------->
+
                 <a href="{% url 'add_to_cart' product.id %}" class="cart-btn">
                     <i class="fas fa-shopping-bag"></i> Add to Cart
                 </a>
-                <!--like-btn------->
                 <a class="like-btn">
                     <i class="far fa-heart"></i>
                 </a>

@@ -77,6 +77,3 @@ def cart(request, total = 0 ,quantity = 0 , cart_items = None):
     }
 
     return render(request, "store/cart.html", context)
-
-
-# Create your views here.

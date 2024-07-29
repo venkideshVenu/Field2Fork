@@ -92,14 +92,13 @@
             <a href="{% url 'notfound' %}" class="nav-item nav-link">Health Info</a>
             <a href="{% url 'contactpage' %}" class="nav-item nav-link">Contact</a>
         </div>
-        <div class="nav-item dropdown">
-            <a href="#" class="nav-link" id="cartDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+        <div class="nav-item">
+            <a href="{% url 'cart' %}" class="nav-link position-relative">
                 <img src="{% static 'marketplace/img/trolley.png' %}" alt="Cart" width="24" height="24">
                 <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
                     {{ total_items }}
                 </span>
             </a>
-            <!-- Add dropdown menu items for cart here if needed -->
         </div>
     </div>
 </nav>
