@@ -1,5 +1,5 @@
-{% extends 'homepage_site/home_nav.html' %}
-{% block content %}
+{% extends 'temp_marketplace/base.html' %}
+{% block body_block %}
 {% load static %}
 
 <link href='https://unpkg.com/css.gg@2.0.0/icons/css/close-o.css' rel='stylesheet'>
@@ -51,7 +51,7 @@
                                     <div class="pr-8 flex ">
                                         <a href="{% url 'remove_cart' cart_item.product.id %}"> <span class="font-semibold">-</span> </a>
                                         <input type="text" class="focus:outline-none bg-gray-100 border text-center h-6 w-10 rounded text-sm px-2 mx-2" value="{{ cart_item.quantity }}">
-                                        <a href="{% url 'add_cart' cart_item.product.id %}"> <span class="font-semibold">+</span> </a>
+                                        <a href="{% url 'add_to_cart' cart_item.product.id %}"> <span class="font-semibold">+</span> </a>
                                     </div>
     
                                     <div class="pr-8 ">

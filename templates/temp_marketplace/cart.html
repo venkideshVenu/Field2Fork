@@ -1,0 +1,61 @@
+{% extends 'temp_marketplace/base.html' %}
+{% load static %}
+{% block body_block %}
+
+<link href="{% static 'marketplace/css/cartStyles.css' %}" rel="stylesheet">
+
+<div class="container">
+    <div class="cart-container">
+        <div class="cart-items">
+            <h1>Your Cart</h1>
+            <div class="product-grid">
+                {{ cart_items |pprint }}
+                {% for cart_item in cart_items %}
+                    <div class="product-card">
+                        <img src="{{ cart_item.product.image.url }}" alt="{{ cart_item.product.product_name }}" class="product-image">
+                        <div class="product-details">
+                            <h3>{{ cart_item.product.product_name }}</h3>
+                            <div class="price-quantity">
+                                <div class="price">$29.99</div>
+                                <div class="quantity-control">
+                                    <a href="{% url 'remove_cart' cart_item.product.id %}"> <button class="quantity-btn minus">-</button> </a>
+                                    
+                                    <div class="quantity">2</div>
+                                    <a href="{% url 'add_to_cart' cart_item.product.id %}"> <button class="quantity-btn plus">+</button> </a>
+                                    
+                                </div>
+                            </div>
+                            <a href="{% url 'delete_cart' cart_item.product.id %}"><button class="remove-btn">Remove</button></a>
+                        </div>
+                    </div>
+                    {% endfor %}
+                
+            </div>
+        </div>
+
+
+        <div class="order-summary">
+            <h2>Order Summary</h2>
+            <div class="summary-item">
+                <div>Total Items</div>
+                <div id="total-items">6</div>
+            </div>
+            <div class="summary-item">
+                <div>Subtotal</div>
+                <div id="subtotal">$123.94</div>
+            </div>
+            <div class="summary-item">
+                <div>Tax (8%)</div>
+                <div id="tax">$9.92</div>
+            </div>
+            <hr>
+            <div class="summary-item total">
+                <div>Total</div>
+                <div id="total">$133.86</div>
+            </div>
+            <button id="checkout-btn">Checkout</button>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

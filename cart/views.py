@@ -13,7 +13,7 @@ def _cart_id(request):
         cart = request.session.create()
     return cart
 
-def add_cart(request, product_id):
+def add_to_cart(request, product_id):
     product = Product.objects.get(id=product_id)
     try:
         cart = Cart.objects.get(cart_id = _cart_id(request))
@@ -73,7 +73,6 @@ def cart(request, total = 0 ,quantity = 0 , cart_items = None):
         'quantity': quantity,
         'cart_items': cart_items,
         'total_items': len(CartItem.objects.all()),
-
     }
-
-    return render(request, "store/cart.html", context)
+    
+    return render(request, "temp_marketplace/cart.html", context)

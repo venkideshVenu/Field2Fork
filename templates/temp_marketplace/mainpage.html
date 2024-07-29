@@ -1,21 +1,23 @@
 {% extends 'temp_marketplace/base.html' %}
-{% block body_block %}
 {% load static %}
+{% block body_block %}
+        <!-- Navbar & Hero End -->
+
+
 
 <link href="{% static 'marketplace/css/homestyle.css' %}" rel="stylesheet">
 <script src="{% static 'marketplace/js/mainpage.js' %}"></script>
 
-<!-- templates/marketplace.html -->
+
 <section id="category">
-    <!--heading---------------->
+    
     <div class="category-heading">
         <h2>Category</h2>
         <span>All</span>
     </div>
 
-    <!--box-container---------->
+
     <div class="category-container">
-        <!-- Django loop to iterate over categories -->
         {% for category in categories %}
             <a class="category-box" href="{{ category.get_slug }}">
                 <img alt="{{ category.category_name }}" src="{{ category.cat_image.url }}">
@@ -34,7 +36,6 @@
 
     <div class="product-container">
         {% for product in products %}
-
             <div class="product-box">
                 <img alt="{{ product.product_name }}" src="{{ product.image.url }}">
                 <strong>{{ product.product_name }}</strong>

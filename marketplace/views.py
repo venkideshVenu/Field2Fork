@@ -1,20 +1,20 @@
-from django.shortcuts import render
-from marketplace.models import Product
-from marketplace.models import Categories
-# Create your views here.
+from django.shortcuts import render, get_object_or_404
+from store.models import Product
 from cart.models import CartItem
 from .models import Categories
 
 
 def market_place(request):
     categories = Categories.objects.all()
-    product = Product.objects.all().filter(is_available=True)
-    product = product[:8]
+    product = Product.objects.all()
+    product = product[:6]
+
     context = {
         'total_items': len(CartItem.objects.all()),
         'products':product,
         'categories': categories,
         }
+    
     return render(request, 'temp_marketplace/mainpage.html', context)
 
 def store(request, category_slug=None,cart_cost=0,cart_items=0):
