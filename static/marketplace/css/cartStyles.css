@@ -109,3 +109,33 @@ hr {
         grid-template-columns: 1fr;
     }
 }
+
+
+/* Common button styles */
+.btn {
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 5px;
+}
+
+/* Checkout button specific styles */
+.checkout-btn {
+    background-color: #007bff;
+    color: white;
+}
+
+/* Back to Shopping button specific styles */
+.back-to-shopping-btn {
+    background-color: white;
+    color: #007bff;
+    border: 2px solid #007bff;
+}
+
+/* Button group styles */
+.button-group {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}

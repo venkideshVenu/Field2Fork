@@ -9,23 +9,23 @@
         <div class="cart-items">
             <h1>Your Cart</h1>
             <div class="product-grid">
-                {{ cart_items |pprint }}
-                {% for cart_item in cart_items %}
+                {% for cart in cart_items %}
                     <div class="product-card">
-                        <img src="{{ cart_item.product.image.url }}" alt="{{ cart_item.product.product_name }}" class="product-image">
+                        <img src="{{ cart.product.image.url }}" alt="{{ cart.product.product_name }}" class="product-image">
                         <div class="product-details">
-                            <h3>{{ cart_item.product.product_name }}</h3>
+                            <h3>{{ cart.product.product_name }}</h3>
                             <div class="price-quantity">
-                                <div class="price">$29.99</div>
+                                <div class="price"> Price : ₹{{ cart.product.price}}</div>
+                                <div class="price"> Total Price : ₹{% widthratio cart.product.price 1 cart.quantity %}</div>
                                 <div class="quantity-control">
-                                    <a href="{% url 'remove_cart' cart_item.product.id %}"> <button class="quantity-btn minus">-</button> </a>
+                                    <a href="{% url 'remove_cart' cart.product.id %}"> <button class="quantity-btn minus">-</button> </a>
                                     
-                                    <div class="quantity">2</div>
-                                    <a href="{% url 'add_to_cart' cart_item.product.id %}"> <button class="quantity-btn plus">+</button> </a>
+                                    <div class="quantity">{{ cart.quantity }}</div>
+                                    <a href="{% url 'add_to_cart' cart.product.id %}"> <button class="quantity-btn plus">+</button> </a>
                                     
                                 </div>
                             </div>
-                            <a href="{% url 'delete_cart' cart_item.product.id %}"><button class="remove-btn">Remove</button></a>
+                            <a href="{% url 'delete_cart' cart.product.id %}"><button class="remove-btn">Remove</button></a>
                         </div>
                     </div>
                     {% endfor %}
@@ -38,23 +38,30 @@
             <h2>Order Summary</h2>
             <div class="summary-item">
                 <div>Total Items</div>
-                <div id="total-items">6</div>
+                <div id="total-items">{{ total_items }}</div>
             </div>
             <div class="summary-item">
                 <div>Subtotal</div>
-                <div id="subtotal">$123.94</div>
+                <div id="subtotal">{{ total }}</div>
             </div>
             <div class="summary-item">
-                <div>Tax (8%)</div>
-                <div id="tax">$9.92</div>
+                <div>Delivery Charges : </div>
+                <div id="tax">₹{% widthratio total_items 1 10 %}</div>
             </div>
             <hr>
+            {% widthratio total_items 1 10 as delivery_charge %}
             <div class="summary-item total">
                 <div>Total</div>
-                <div id="total">$133.86</div>
+                <div id="total">₹{{ total|add:delivery_charge }}</div>
             </div>
-            <button id="checkout-btn">Checkout</button>
+            <div class="button-group">
+                <button class="btn checkout-btn" id="checkout-btn">Checkout</button>
+                <button class="btn back-to-shopping-btn" id="back-to-shopping-btn" onclick="window.location.href='{% url 'marketpage' %}'">Back to Shopping</button>
+            </div>
         </div>
+        
+        
+        
     </div>
 </div>
 
