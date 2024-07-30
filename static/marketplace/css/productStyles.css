@@ -73,7 +73,7 @@ body {
 }
 
 .product-details {
-    background-color: #4a5568;
+    background-color: #2fe1e7;
     color: white;
     font-size: 0.875rem;
     font-weight: 500;
@@ -87,7 +87,7 @@ body {
     background-color: #2d3748;
 }
 .wishlist {
-    background-color: white;
+    background-color: rgb(50, 158, 190);
     color: #4a5568;
     font-size: 0.875rem;
     font-weight: 500;

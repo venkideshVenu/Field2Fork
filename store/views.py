@@ -31,5 +31,3 @@ def store(request, category_slug=None,cart_cost=0,cart_items=0):
 
     return render(request, "store/store.html", context)
 
-
-

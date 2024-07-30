@@ -6,8 +6,9 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     path('', views.market_place, name="marketpage"),
-     path('<slug:category_slug>/', views.store, name='product_by_category'),
-    path('<slug:category_slug>/<slug:product_slug>/',views.product_detail, name='product_detail'),
+    path('all/', views.allProducts, name='showAllProducts'),  # Move this line up
+    path('<slug:category_slug>/', views.store, name='product_by_category'),
+    path('<slug:category_slug>/<slug:product_slug>/', views.product_detail, name='product_detail'),
 ]
 
 if settings.DEBUG:

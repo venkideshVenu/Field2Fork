@@ -1,39 +1,14 @@
 {% extends 'temp_marketplace/base.html' %}
 {% load static %}
+
 {% block body_block %}
-        <!-- Navbar & Hero End -->
-
-
 
 <link href="{% static 'marketplace/css/homestyle.css' %}" rel="stylesheet">
 <script src="{% static 'marketplace/js/mainpage.js' %}"></script>
 
 
-<section id="category">
-    
-    <div class="category-heading">
-        <h2>Category</h2>
-        <span>All</span>
-    </div>
-
-
-    <div class="category-container">
-        {% for category in categories %}
-        <a href="{% url 'product_by_category' category.slug %}" class="category-box">
-            <img src="{{ category.cat_image.url }}" alt="{{ category.category_name }}">
-            {{ category.category_name }}
-        </a>
-        {% endfor %}
-    </div>
-</section>
-
-<section id="popular-product">
-    
-    <div class="product-heading">
-        <h3>Popular Product</h3>
-        <a href="{% url 'showAllProducts' %}">All</a>
-    </div>
-
+<div class="category-products">
+    <h2>{{ category.category_name }}</h2>
     <div class="product-container">
         {% for product in products %}
             <div class="product-box">
@@ -54,5 +29,5 @@
             <p>No products available.</p>
         {% endfor %}
     </div>
-</section>
+</div>
 {% endblock %}

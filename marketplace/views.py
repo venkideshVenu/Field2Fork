@@ -2,7 +2,7 @@ from django.shortcuts import render, get_object_or_404
 from store.models import Product
 from cart.models import CartItem
 from .models import Categories
-
+from django.shortcuts import redirect
 
 def market_place(request):
     categories = Categories.objects.all()
@@ -41,7 +41,7 @@ def store(request, category_slug=None,cart_cost=0,cart_items=0):
         'total_items': len(CartItem.objects.all()),
     }
 
-    return render(request, "store/store.html", context)
+    return render(request, 'temp_marketplace/categoryProductList.html', context)
 
 
 def product_detail(request, category_slug, product_slug):
@@ -55,5 +55,17 @@ def product_detail(request, category_slug, product_slug):
         'total_items': len(CartItem.objects.all()),
 
     }
-
     return render(request, "temp_marketplace/product_details.html",context)
+
+
+def allProducts(request):
+    products = Product.objects.filter(is_available=True)
+    product_count = products.count()
+
+    context = {
+        'products': products,
+        'product_count': product_count,
+        'total_items': len(CartItem.objects.all()),
+    }
+
+    return render(request, 'temp_marketplace/allProducts.html', context)

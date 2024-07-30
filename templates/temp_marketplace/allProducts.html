@@ -1,0 +1,32 @@
+{% extends 'temp_marketplace/base.html' %}
+{% load static %}
+
+{% block body_block %}
+
+<link href="{% static 'marketplace/css/homestyle.css' %}" rel="stylesheet">
+<script src="{% static 'marketplace/js/mainpage.js' %}"></script>
+
+<div class="all-products">
+    <h2>All Products</h2>
+    
+    {% if products %}
+        <p>Total Products: {{ product_count }}</p>
+        <div class="product-container">
+            {% for product in products %}
+            <div class="product-box">
+                <a href="{{ product.get_url }}">
+                    <img src="{{ product.image.url }}" alt="{{ product.product_name }}">
+                    <h3>{{ product.product_name }}</h3>
+                    <p class="quantity">1 KG</p>
+                    <p class="price">Rs. {{ product.price }}</p>
+                </a>
+                <a href="{% url 'add_to_cart' product.id %}" class="cart-btn">Add to Cart</a>
+                <span class="like-btn"></span>
+            </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <p>No products available.</p>
+    {% endif %}
+</div>
+{% endblock %}
