@@ -1,0 +1,61 @@
+{% extends 'temp_homepage/base.html' %}
+{% block body_block %}
+{% load static %}
+
+<div class="container-xxl py-5 bg-primary hero-header mb-5">
+    <div class="container my-5 py-5 px-lg-5">
+        <div class="row g-5 py-5">
+            <div class="col-12 text-center">
+                <h1 class="text-white animated zoomIn">Health Information</h1>
+                <hr class="bg-white mx-auto mt-0" style="width: 90px;">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb justify-content-center">
+                        <li class="breadcrumb-item"><a class="text-white" href="#">Home</a></li>
+                        <li class="breadcrumb-item"><a class="text-white" href="#">Pages</a></li>
+                        <li class="breadcrumb-item text-white active" aria-current="page">Contact</li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+    </div>
+</div>
+
+<section id="blog">
+
+    <!-- --------heading-------- -->
+    <div class="blog-heading">
+        <h3>{{ article.title}}</h3>
+        <a>{{ article.date}}  |  {{ article.subject }}</a>
+    </div>
+
+    <!-- ---------blog-container---------- -->
+    <div class="blog-container">
+        <div class="blog-box-article">
+            {% comment %}
+            <div class="blog-img">
+                <img src="" alt="Blog Image">
+            </div>
+            {% endcomment %}
+            <div class="blog-text-article">
+                <p>{{ article.article }}</p>
+            </div>
+        </div>
+    </div>
+
+</section>
+
+<div class="container-xxl py-5" id="add">
+    <div class="container px-lg-5">
+        <div class="row justify-content-center">
+            <div class="col-lg-7">
+                <form method="post" action="{% url 'addblog' %}">
+                    {% csrf_token %}
+                        <div class="col-12">
+                            <input class="btn btn-primary w-100 py-3" type="submit" value="Back">
+                        </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
