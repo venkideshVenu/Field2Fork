@@ -62,7 +62,42 @@
                         <a href="{% url 'marketpage' %}" class="nav-item nav-link">Marketplace</a>
                         <a href="{% url 'notfound' %}" class="nav-item nav-link">Health Info</a>
                         
-                        <a href="{% url 'contactpage' %}" class="nav-item nav-link">Contact</a>
+                        <div class="nav-item dropdown">
+                            <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Account</a>
+                            <div class="dropdown-menu m-0">
+                                <div class="dropdown-item">
+                                    {% if user.id is not none %}
+                                    {{ user.username }}
+                                    {% else %}
+                                    Guest
+                                    {% endif %}
+                                  
+                                </div>
+                                <div class="dropdown-item">
+                                    {% if user.id is not none %}
+                                    {{ user.email }}
+                                    {% else %}
+                                    Guest Account
+                                    {% endif %}              
+                                </div>  
+                                <div>
+                                    <li>
+                                        {% if user.id is not none %}
+                                        <a href="{% url 'dashboard' %}" class="block px-4 py-2 hover:bg-blue-100 dark:hover:bg-gray-600 dark:hover:text-white">Account</a>
+                                      </li>
+                                      {% else %}
+                                    <div class="block font-bold px-4 py-2 bg-red-300 dark:hover:bg-gray-600 dark:hover:text-white ">  Required to Login </div>
+                                      {% endif %}
+                                    </div>
+                                <div class="dropdown-item">
+                                    {% if user.id is none %}
+                                    <a href="{% url 'login' %}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-green-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Login</a>
+                                    {% else %}
+                                    <a href="{% url 'logout' %}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-red-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Logout</a>
+                                    {% endif %}
+                                  </div>
+                            </div>
+                        </div>
                     </div>
                     
                     <a href="{% url 'login' %}" class="btn btn-secondary text-light rounded-pill py-2 px-4 ms-3">Join Us</a>
