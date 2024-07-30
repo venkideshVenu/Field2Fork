@@ -56,4 +56,4 @@ def product_detail(request, category_slug, product_slug):
 
     }
 
-    return render(request, "store/product_detail.html",context)
+    return render(request, "temp_marketplace/product_details.html",context)

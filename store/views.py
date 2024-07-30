@@ -32,16 +32,4 @@ def store(request, category_slug=None,cart_cost=0,cart_items=0):
     return render(request, "store/store.html", context)
 
 
-def product_detail(request, category_slug, product_slug):
-    try:
-        single_product = Product.objects.get(category__slug = category_slug, slug = product_slug)
-    except Exception as e:
-        raise e
-    
-    context = {
-        'single_product' : single_product,
-        'total_items': len(CartItem.objects.all()),
 
-    }
-
-    return render(request, "store/product_detail.html",context)
