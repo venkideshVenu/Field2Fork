@@ -14,7 +14,6 @@ from django.core.mail import EmailMessage
 
 
 
-# Create your views here.
 def login(request):
     if request.method == "POST":
         email = request.POST["email"]
@@ -75,5 +74,3 @@ def dashboard(request):
         'user_form': user_form,    
     }
     return render(request, "temp_login/dashboard.html",context=context)
-
-

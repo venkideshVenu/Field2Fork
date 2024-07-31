@@ -1,0 +1,33 @@
+{% extends 'temp_homepage/base.html' %}
+{% block body_block %}
+{% load static %}
+<div class="container-xxl py-5 bg-primary hero-header mb-5">
+    <div class="container my-5 py-5 px-lg-5">
+        <div class="row g-5 py-5">
+            <div class="col-12 text-center">
+                <h1 class="text-white animated zoomIn">Contact Us</h1>
+                <hr class="bg-white mx-auto mt-0" style="width: 90px;">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb justify-content-center">
+                        <li class="breadcrumb-item"><a class="text-white" href="{% url 'homepage' %}">Home</a></li>
+                        <li class="breadcrumb-item"><a class="text-white">Pages</a></li>
+                        <li class="breadcrumb-item"><a class="text-white" href="#contact">Contact</a></li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container-xxl py-5">
+    <div class="container px-lg-5">
+        <div class="row justify-content-center">
+            <div class="col-lg-7 text-center">
+                <h2>Thank You!</h2>
+                <p>Your message has been successfully sent. We will get back to you soon.</p>
+                <a href="{% url 'homepage' %}" class="btn btn-primary">Back to Home</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

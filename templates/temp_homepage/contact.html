@@ -1,7 +1,7 @@
-
 {% extends 'temp_homepage/base.html' %}
 {% block body_block %}
 {% load static %}
+
 <div class="container-xxl py-5 bg-primary hero-header mb-5">
     <div class="container my-5 py-5 px-lg-5">
         <div class="row g-5 py-5">
@@ -19,8 +19,8 @@
         </div>
     </div>
 </div>
-<!-- Contact Start -->
-<div class="container-xxl py-5" id="contact">
+
+<div id="contact" class="container-xxl py-5">
     <div class="container px-lg-5">
         <div class="row justify-content-center">
             <div class="col-lg-7">
@@ -28,31 +28,53 @@
                     <h6 class="position-relative d-inline text-primary ps-4">Contact Us</h6>
                     <h2 class="mt-2">Contact For Any Query</h2>
                 </div>
+
                 <div class="wow fadeInUp" data-wow-delay="0.3s">
-                    <form>
+                    <form method="post">
+                        {% csrf_token %}
                         <div class="row g-3">
                             <div class="col-md-6">
                                 <div class="form-floating">
-                                    <input type="text" class="form-control" id="name" placeholder="Your Name">
-                                    <label for="name">Your Name</label>
+                                    {{ form.name }}
+                                    <label for="{{ form.name.id_for_label }}">Your Name</label>
+                                    {% if form.name.errors %}
+                                        <div class="invalid-feedback d-block">
+                                            {{ form.name.errors.0 }}
+                                        </div>
+                                    {% endif %}
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-floating">
-                                    <input type="email" class="form-control" id="email" placeholder="Your Email">
-                                    <label for="email">Your Email</label>
+                                    {{ form.email }}
+                                    <label for="{{ form.email.id_for_label }}">Your Email</label>
+                                    {% if form.email.errors %}
+                                        <div class="invalid-feedback d-block">
+                                            {{ form.email.errors.0 }}
+                                        </div>
+                                    {% endif %}
                                 </div>
                             </div>
                             <div class="col-12">
                                 <div class="form-floating">
-                                    <input type="text" class="form-control" id="subject" placeholder="Subject">
-                                    <label for="subject">Subject</label>
+                                    {{ form.subject }}
+                                    <label for="{{ form.subject.id_for_label }}">Subject</label>
+                                    {% if form.subject.errors %}
+                                        <div class="invalid-feedback d-block">
+                                            {{ form.subject.errors.0 }}
+                                        </div>
+                                    {% endif %}
                                 </div>
                             </div>
                             <div class="col-12">
                                 <div class="form-floating">
-                                    <textarea class="form-control" placeholder="Leave a message here" id="message" style="height: 150px"></textarea>
-                                    <label for="message">Message</label>
+                                    {{ form.message }}
+                                    <label for="{{ form.message.id_for_label }}">Message</label>
+                                    {% if form.message.errors %}
+                                        <div class="invalid-feedback d-block">
+                                            {{ form.message.errors.0 }}
+                                        </div>
+                                    {% endif %}
                                 </div>
                             </div>
                             <div class="col-12">
@@ -65,6 +87,5 @@
         </div>
     </div>
 </div>
-<!-- Contact End -->
 
-{% endblock  %}
+{% endblock %}
