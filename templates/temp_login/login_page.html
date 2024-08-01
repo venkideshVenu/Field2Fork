@@ -27,45 +27,40 @@
 			<div class="col-lg-7">
 				<div class="position-relative text-center mb-5 pb-2 wow fadeInUp" data-wow-delay="0.1s">
 					<h6 class="position-relative d-inline">
-						<p class="mt-2 text-center text-sm text-[#333]">Don't have an Account ?<a href="{% url 'register' %}" class="font-medium text-[#333] hover:text-[#4777F4]">  Register</a>
-					</p>
+						<p class="mt-2 text-center text-sm text-[#333]">Don't have an Account? <a href="{% url 'register' %}" class="font-medium text-[#333] hover:text-[#4777F4]">Register</a>
+						</p>
 					</h6>
 				</div>
 				<div class="wow fadeInUp" data-wow-delay="0.3s">
 					<form method="post" action="{% url 'login' %}">
-						{% if messages %}
-							{% for message in messages %}
-							<div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
-								<strong class="font-bold">Warning !</strong>
-								<span class="block sm:inline">{{message}}</span>
-								<span class="absolute top-0 bottom-0 right-0 px-0 py-3">
-									<a href="{% url 'login' %}">
-										<svg class="fill-current h-6 w-6 text-red-500" role="button" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><title>Close</title><path d="M14.348 14.849a1.2 1.2 0 0 1-1.697 0L10 11.819l-2.651 3.029a1.2 1.2 0 1 1-1.697-1.697l2.758-3.15-2.759-3.152a1.2 1.2 0 1 1 1.697-1.697L10 8.183l2.651-3.031a1.2 1.2 0 1 1 1.697 1.697l-2.758 3.152 2.758 3.15a1.2 1.2 0 0 1 0 1.698z"/></svg>
-									</a>
-								</span>
-							</div>
-							{% endfor %}
-						{% endif %}
 						{% csrf_token %}
+						{% if messages %}
+							<div class="alert alert-danger alert-dismissible fade show" role="alert">
+								{% for message in messages %}
+									<strong>Warning!</strong> {{ message }}
+									<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+								{% endfor %}
+							</div>
+						{% endif %}
 						<div class="col-12">
 							<div class="row g-3">
 								<div class="col-12">
 									<div class="form-floating">
-										<input type="text" class="form-control" id="username" name='username' placeholder="Username" required>
+										<input type="text" class="form-control" name="username" id="username" placeholder="Username" required />
 										<label for="username">Username</label>
 									</div>
 								</div>  
 								<div class="col-12">
 									<div class="form-floating">
-										<input type="password" class="form-control" id="password" name='password' placeholder="Password" required>
+										<input type="password" name="password" id="password" placeholder="Password" class="form-control" required />
 										<label for="password">Password</label>
 									</div>
 								</div>
 								<div class="text-sm">
 									<a href="#" class="font-medium text-black hover:text-[#4777F4]">
-									  Forgot your password?
+										Forgot your password?
 									</a>
-								  </div>
+								</div>
 								<div class="col-12">
 									<input class="btn btn-primary w-100 py-3" type="submit" value="Log In">
 								</div>
@@ -78,4 +73,4 @@
 	</div>
 </div>
 
-{% endblock  %}
+{% endblock %}

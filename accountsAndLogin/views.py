@@ -16,7 +16,6 @@ from django.core.mail import EmailMessage
 
 def login(request):
     if request.method == "POST":
-        email = request.POST["email"]
         password = request.POST["password"]
         username = request.POST["username"]
 
