@@ -4,17 +4,43 @@ from cart.models import CartItem
 from .models import Categories
 from django.shortcuts import redirect
 
+
+from cart.models import Cart
+from cart.models import CartItem
+
+
+from django.shortcuts import render, get_object_or_404, redirect
+from store.models import Product
+from cart.models import Cart, CartItem
+from .models import Categories
+
 def market_place(request):
     categories = Categories.objects.all()
-    product = Product.objects.all()
-    product = product[:6]
+    products = Product.objects.all()[:6]
+
+    if request.user.is_authenticated:
+        cart, created = Cart.objects.get_or_create(user=request.user)
+    else:
+        cart = None
+        cart_id = request.session.get('cart_id')
+        if cart_id:
+            try:
+                cart = Cart.objects.get(id=cart_id)
+            except Cart.DoesNotExist:
+                cart = Cart.objects.create()
+                request.session['cart_id'] = cart.id
+        else:
+            cart = Cart.objects.create()
+            request.session['cart_id'] = cart.id
+
+    cart_items = CartItem.objects.filter(cart=cart, is_active=True) if cart else []
 
     context = {
-        'total_items': len(CartItem.objects.all()),
-        'products':product,
+        'products': products,
         'categories': categories,
-        }
-    
+        'total_items': cart_items.count() if cart_items else 0,
+    }
+
     return render(request, 'temp_marketplace/mainpage.html', context)
 
 def store(request, category_slug=None,cart_cost=0,cart_items=0):

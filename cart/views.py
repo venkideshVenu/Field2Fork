@@ -19,6 +19,7 @@ def _cart_id(request):
             cart = request.session.create()
         return cart
 
+
 def get_or_create_cart(request):
     if request.user.is_authenticated:
         cart, created = Cart.objects.get_or_create(user=request.user)
