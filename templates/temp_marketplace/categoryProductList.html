@@ -6,9 +6,13 @@
 <link href="{% static 'marketplace/css/homestyle.css' %}" rel="stylesheet">
 <script src="{% static 'marketplace/js/mainpage.js' %}"></script>
 
+<section id="popular-product">
+    
+    <div class="product-heading">
+        <h3>{{ category.category_name }}</h3>
 
-<div class="category-products">
-    <h2>{{ category.category_name }}</h2>
+    </div>
+
     <div class="product-container">
         {% for product in products %}
             <div class="product-box">
@@ -29,5 +33,5 @@
             <p>No products available.</p>
         {% endfor %}
     </div>
-</div>
+</section>
 {% endblock %}

@@ -56,9 +56,10 @@
                 <div class="collapse navbar-collapse" id="navbarCollapse">
                     <div class="navbar-nav ms-auto py-0">
                         <a href="{% url 'homepage' %}" class="nav-item nav-link">Home</a>
-                        <a href="{% url 'aboutpage' %}" class="nav-item nav-link">About</a>
                         <a href="{% url 'marketpage' %}" class="nav-item nav-link">Marketplace</a>
                         <a href="{% url 'addblog' %}" class="nav-item nav-link">Health Info</a>
+                        <a href="{% url 'aboutpage' %}" class="nav-item nav-link">About</a>
+                        <a href="{% url 'contactpage' %}" class="nav-item nav-link">Contact Us</a>
                         <div class="nav-item dropdown">
                             <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Account</a>
                             <div class="dropdown-menu m-0">
@@ -78,14 +79,6 @@
                                     {% endif %}              
                                 </div>  
                                 <div>
-                                    <li>
-                                        {% if user.id is not none %}
-                                        <a href="{% url 'dashboard' %}" class="block px-4 py-2 hover:bg-blue-100 dark:hover:bg-gray-600 dark:hover:text-white">Account</a>
-                                      </li>
-                                      {% else %}
-                                    <div class="block font-bold px-4 py-2 bg-red-300 dark:hover:bg-gray-600 dark:hover:text-white ">  Required to Login </div>
-                                      {% endif %}
-                                    </div>
                                 <div class="dropdown-item">
                                     {% if user.id is none %}
                                     <a href="{% url 'login' %}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-green-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Login</a>
@@ -96,6 +89,7 @@
                             </div>
                         </div>
                     </div>
+                    
                     <a href="{% url 'cart' %}" class="nav-link position-relative">
                         <img src="{% static 'marketplace/img/trolley.png' %}" width="24" height="24" alt="Cart">
                        

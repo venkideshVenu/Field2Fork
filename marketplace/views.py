@@ -57,6 +57,23 @@ def store(request, category_slug=None,cart_cost=0,cart_items=0):
         products = Product.objects.all().filter(is_available= True)
         product_count = products.count()
 
+    if request.user.is_authenticated:
+        cart, created = Cart.objects.get_or_create(user=request.user)
+    else:
+        cart = None
+        cart_id = request.session.get('cart_id')
+        if cart_id:
+            try:
+                cart = Cart.objects.get(id=cart_id)
+            except Cart.DoesNotExist:
+                cart = Cart.objects.create()
+                request.session['cart_id'] = cart.id
+        else:
+            cart = Cart.objects.create()
+            request.session['cart_id'] = cart.id
+
+    cart_items = CartItem.objects.filter(cart=cart, is_active=True) if cart else []
+
     context = {
         'products' : products,
         'product_count' : product_count,
@@ -64,7 +81,7 @@ def store(request, category_slug=None,cart_cost=0,cart_items=0):
         'selcted_slug' : category_slug,
         'cart_cost': cart_cost,
         'cart_items': cart_items,
-        'total_items': len(CartItem.objects.all()),
+        'total_items': cart_items.count() if cart_items else 0,
     }
 
     return render(request, 'temp_marketplace/categoryProductList.html', context)
@@ -76,9 +93,25 @@ def product_detail(request, category_slug, product_slug):
     except Exception as e:
         raise e
     
+    if request.user.is_authenticated:
+        cart, created = Cart.objects.get_or_create(user=request.user)
+    else:
+        cart = None
+        cart_id = request.session.get('cart_id')
+        if cart_id:
+            try:
+                cart = Cart.objects.get(id=cart_id)
+            except Cart.DoesNotExist:
+                cart = Cart.objects.create()
+                request.session['cart_id'] = cart.id
+        else:
+            cart = Cart.objects.create()
+            request.session['cart_id'] = cart.id
+
+    cart_items = CartItem.objects.filter(cart=cart, is_active=True) if cart else []
     context = {
         'single_product' : single_product,
-        'total_items': len(CartItem.objects.all()),
+        'total_items': cart_items.count() if cart_items else 0,
 
     }
     return render(request, "temp_marketplace/product_details.html",context)
@@ -88,10 +121,26 @@ def allProducts(request):
     products = Product.objects.filter(is_available=True)
     product_count = products.count()
 
+    if request.user.is_authenticated:
+        cart, created = Cart.objects.get_or_create(user=request.user)
+    else:
+        cart = None
+        cart_id = request.session.get('cart_id')
+        if cart_id:
+            try:
+                cart = Cart.objects.get(id=cart_id)
+            except Cart.DoesNotExist:
+                cart = Cart.objects.create()
+                request.session['cart_id'] = cart.id
+        else:
+            cart = Cart.objects.create()
+            request.session['cart_id'] = cart.id
+
+    cart_items = CartItem.objects.filter(cart=cart, is_active=True) if cart else []
     context = {
         'products': products,
         'product_count': product_count,
-        'total_items': len(CartItem.objects.all()),
+        'total_items': cart_items.count() if cart_items else 0,
     }
 
     return render(request, 'temp_marketplace/allProducts.html', context)
