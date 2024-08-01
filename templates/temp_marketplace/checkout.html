@@ -1,0 +1,107 @@
+{% extends 'temp_marketplace/base.html' %}
+{% load static %}
+
+{% block body_block %}
+<div class="container">
+    <h1>Checkout</h1>
+    <form method="post" id="checkout-form">
+        {% csrf_token %}
+        <div class="row">
+            <div class="col-md-6">
+                <h2>Shipping Address</h2>
+                <div class="form-group">
+                    <label for="full_name">Full Name</label>
+                    <input type="text" class="form-control" id="full_name" name="full_name" required>
+                </div>
+                <div class="form-group">
+                    <label for="address_line1">Address Line 1</label>
+                    <input type="text" class="form-control" id="address_line1" name="address_line1" required>
+                </div>
+                <div class="form-group">
+                    <label for="address_line2">Address Line 2</label>
+                    <input type="text" class="form-control" id="address_line2" name="address_line2">
+                </div>
+                <div class="form-group">
+                    <label for="city">City</label>
+                    <input type="text" class="form-control" id="city" name="city" required>
+                </div>
+                <div class="form-group">
+                    <label for="state">State</label>
+                    <input type="text" class="form-control" id="state" name="state" required>
+                </div>
+                <div class="form-group">
+                    <label for="postal_code">Postal Code</label>
+                    <input type="text" class="form-control" id="postal_code" name="postal_code" required>
+                </div>
+                <div class="form-group">
+                    <label for="country">Country</label>
+                    <input type="text" class="form-control" id="country" name="country" required>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <h2>Payment Information</h2>
+                <div class="form-group">
+                    <label for="card_number">Card Number</label>
+                    <input type="text" class="form-control" id="card_number" name="card_number" required>
+                </div>
+                <div class="form-group">
+                    <label for="card_holder">Card Holder Name</label>
+                    <input type="text" class="form-control" id="card_holder" name="card_holder" required>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="expiry_date">Expiry Date</label>
+                        <input type="text" class="form-control" id="expiry_date" name="expiry_date" placeholder="MM/YY" required>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="cvv">CVV</label>
+                        <input type="text" class="form-control" id="cvv" name="cvv" required>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <h2>Order Summary</h2>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Item</th>
+                            <th>Quantity</th>
+                            <th>Price</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for item in cart_items %}
+                        <tr>
+                            <td>{{ item.product.product_name }}</td>
+                            <td>{{ item.quantity }}</td>
+                            <td>₹{{ item.product.price }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <td colspan="2"><strong>Subtotal</strong></td>
+                            <td>₹{{ total }}</td>
+                        </tr>
+                        <tr>
+                            <td colspan="2"><strong>Delivery Charges</strong></td>
+                            <td>₹{% widthratio total_items 1 10 %}</td>
+                        </tr>
+                        <tr>
+                            <td colspan="2"><strong>Total</strong></td>
+                            <td>₹{{ total|add:delivery_charge }}</td>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <button type="submit" class="btn btn-primary btn-block">Place Order</button>
+            </div>
+        </div>
+    </form>
+</div>
+{% endblock %}

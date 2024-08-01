@@ -78,7 +78,7 @@
                                     Guest Account
                                     {% endif %}              
                                 </div>  
-                                <div>
+     
                                 <div class="dropdown-item">
                                     {% if user.id is none %}
                                     <a href="{% url 'login' %}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-green-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Login</a>
@@ -167,8 +167,8 @@
                             <div class="footer-menu">
                                 <a href="{% url 'homepage' %}">Home</a>
                                 <a href="{% url 'notfound' %}">Cookies</a>
-                                <a href="{% url 'notfound' %}">Help</a>
-                                <a href="{% url 'notfound' %}">FAQs</a>
+                                <a href="{% url 'helppage' %}">Help</a>
+                                <a href="{% url 'faqpage' %}">FAQs</a>
                             </div>
                         </div>
                     </div>
