@@ -11,6 +11,9 @@ def get_about_page(request):
 def get_faq(request):
     return render(request, 'temp_homepage/faq.html',context={})
 
+def get_help(request):
+    return render(request, 'temp_homepage/help.html',context={})
+
 def get_error_page(request):
     return render(request, 'temp_homepage/404.html',context={})
 

@@ -9,5 +9,6 @@ urlpatterns = [
     path('contact/success/', views.contact_success, name="contact_success"),
     path('pagenotfound/', views.get_error_page, name="notfound"),
     path('faqs/', views.get_faq, name="faqpage"),
+    path('help/', views.get_help, name="helppage"),
 ]
 

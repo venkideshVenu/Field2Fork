@@ -1,0 +1,101 @@
+{% extends 'temp_homepage/base.html' %}
+{% block body_block %}
+{% load static %}
+<div class="container-xxl py-5 bg-primary hero-header mb-5">
+    <div class="container my-5 py-5 px-lg-5">
+        <div class="row g-5 py-5">
+            <div class="col-12 text-center">
+                <h1 class="text-white animated zoomIn">Help</h1>
+                <hr class="bg-white mx-auto mt-0" style="width: 90px;">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb justify-content-center">
+                        
+                    </ol>
+                </nav>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Help Start -->
+<div class="container-xxl py-5">
+    <div class="container px-lg-5">
+        <div class="row g-5">
+            <div class="col-lg-12 text-center">
+                <h2>Help & Support</h2>
+                <p class="mb-5">Find answers to your questions and get the support you need.</p>
+            </div>
+            <div class="col-lg-12">
+                <div class="accordion" id="helpAccordion">
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingOne">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                How do I create an account?
+                            </button>
+                        </h2>
+                        <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#helpAccordion">
+                            <div class="accordion-body">
+                                To create an account, click on the "Get Started" button on the homepage, fill in your details, and submit the form. You will receive a confirmation email to verify your account.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingTwo">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                How can I reset my password?
+                            </button>
+                        </h2>
+                        <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#helpAccordion">
+                            <div class="accordion-body">
+                                If you forgot your password, click on the "Forgot Password" link on the login page. Enter your registered email address, and you will receive instructions to reset your password.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingThree">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                How do I place an order?
+                            </button>
+                        </h2>
+                        <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#helpAccordion">
+                            <div class="accordion-body">
+                                To place an order, browse the products on our marketplace, add the desired items to your cart, and proceed to checkout. Fill in the required details and confirm your order.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingFour">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                                What payment methods are accepted?
+                            </button>
+                        </h2>
+                        <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#helpAccordion">
+                            <div class="accordion-body">
+                                We accept various payment methods including credit/debit cards, net banking, and UPI. Choose the payment method that suits you best during the checkout process.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingFive">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+                                How can I contact customer support?
+                            </button>
+                        </h2>
+                        <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive" data-bs-parent="#helpAccordion">
+                            <div class="accordion-body">
+                                If you need assistance, you can contact our customer support team via the "Contact Us" page. Fill out the form with your query, and we will get back to you as soon as possible.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="text-center mt-5">
+                    <a href="{% url 'homepage' %}" class="btn btn-primary py-sm-3 px-sm-5 rounded-pill">Back to Home</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Help End -->
+
+{% endblock %}
