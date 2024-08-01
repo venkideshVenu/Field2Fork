@@ -4,6 +4,9 @@ from cart.models import Cart
 from cart.models import CartItem
 
 from store.models import Product
+from django.http import HttpResponseRedirect
+from django.urls import reverse
+
 
 # Create your views here.
 
@@ -39,7 +42,15 @@ def add_to_cart(request, product_id):
             cart=cart,
         )
 
-    return redirect('cart')
+    # Get the URL of the page that made the request
+    next_page = request.META.get('HTTP_REFERER')
+    
+    if next_page:
+        # If there's a valid referring page, redirect back to it
+        return HttpResponseRedirect(next_page)
+    else:
+        # If there's no valid referring page, redirect to a default page (e.g., marketplace)
+        return HttpResponseRedirect(reverse('marketpage'))
 
 def remove_cart(request, product_id):
     cart = get_or_create_cart(request)
