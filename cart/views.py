@@ -8,49 +8,52 @@ from store.models import Product
 # Create your views here.
 
 def _cart_id(request):
-    cart = request.session.session_key
-    if not cart:
-        cart = request.session.create()
+    if request.user.is_authenticated:
+        return str(request.user.id)
+    else:
+        cart = request.session.session_key
+        if not cart:
+            cart = request.session.create()
+        return cart
+
+def get_or_create_cart(request):
+    if request.user.is_authenticated:
+        cart, created = Cart.objects.get_or_create(user=request.user)
+    else:
+        cart_id = _cart_id(request)
+        cart, created = Cart.objects.get_or_create(cart_id=cart_id)
     return cart
 
 def add_to_cart(request, product_id):
     product = Product.objects.get(id=product_id)
-    try:
-        cart = Cart.objects.get(cart_id = _cart_id(request))
-    except Cart.DoesNotExist :
-        cart = Cart.objects.create(
-            cart_id = _cart_id(request)
-        )
-    cart.save()
+    cart = get_or_create_cart(request)
 
     try:
-        cart_item = CartItem.objects.get(product=product, cart=cart )
+        cart_item = CartItem.objects.get(product=product, cart=cart)
         cart_item.quantity += 1
         cart_item.save()
     except CartItem.DoesNotExist:
         cart_item = CartItem.objects.create(
             product=product,
-            quantity = 0,
-            cart = cart,
+            quantity=1,
+            cart=cart,
         )
-
-        cart_item.save()
 
     return redirect('cart')
 
 def remove_cart(request, product_id):
-    cart = Cart.objects.get(cart_id = _cart_id(request))
+    cart = get_or_create_cart(request)
     product = get_object_or_404(Product, id=product_id)
     cart_item = CartItem.objects.get(product=product, cart=cart)
-    if cart_item.quantity > 1 :
+    if cart_item.quantity > 1:
         cart_item.quantity -= 1
         cart_item.save()
     else:
         cart_item.delete()
     return redirect('cart')
 
-def delete_cart(request,product_id):
-    cart = Cart.objects.get(cart_id = _cart_id(request))
+def delete_cart(request, product_id):
+    cart = get_or_create_cart(request)
     product = get_object_or_404(Product, id=product_id)
     cart_item = CartItem.objects.get(product=product, cart=cart)
     cart_item.delete()
@@ -58,21 +61,21 @@ def delete_cart(request,product_id):
 
 
 
-def cart(request, total = 0 ,quantity = 0 , cart_items = None):
+def cart(request, total=0, quantity=0, cart_items=None):
     try:
-        cart = Cart.objects.get(cart_id = _cart_id(request))
-        cart_items = CartItem.objects.filter(cart=cart , is_active=True)
+        cart = get_or_create_cart(request)
+        cart_items = CartItem.objects.filter(cart=cart, is_active=True)
         for cart_item in cart_items:
             total += (cart_item.product.price * cart_item.quantity)
             quantity += cart_item.quantity
-    except :
+    except:
         pass
 
     context = {
         'total': total,
         'quantity': quantity,
         'cart_items': cart_items,
-        'total_items': len(CartItem.objects.all()),
+        'total_items': cart_items.count() if cart_items else 0,
     }
     
     return render(request, "temp_marketplace/cart.html", context)
